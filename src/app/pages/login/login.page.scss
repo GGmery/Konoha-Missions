@@ -1,0 +1,118 @@
+﻿.login-content {
+  --ion-background-color: #1a0f2e;
+}
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #1a0f2e 0%, #2d1b4e 100%);
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(58, 35, 100, 0.4);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(147, 112, 219, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.login-form-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #e0d9ff;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+ion-item {
+  margin-bottom: 20px;
+  --border-color: transparent;
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+ion-item ion-input,
+ion-item ion-label {
+  --color: #e0d9ff;
+}
+
+ion-label {
+  margin: 0 !important;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #b0a4d4 !important;
+  min-width: 70px;
+  flex-shrink: 0;
+}
+
+ion-input {
+  font-size: 14px !important;
+  padding: 10px 0 !important;
+  border-bottom: 1px solid rgba(147, 112, 219, 0.5) !important;
+  flex: 1;
+}
+
+.error-message {
+  color: #ff6b6b;
+  margin: 15px 0;
+  padding: 12px;
+  background: rgba(255, 107, 107, 0.1);
+  border-left: 4px solid #ff6b6b;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.btn-login {
+  margin-top: 30px;
+  --background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+  --border-radius: 8px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5);
+  transition: all 0.3s ease;
+}
+
+.btn-login:active,
+.btn-login:focus {
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.7);
+  transform: translateY(-2px);
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 13px;
+  color: #b0a4d4;
+}
+
+.register-link a {
+  color: #c4b5fd;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #e9d5ff;
+  text-decoration: underline;
+}

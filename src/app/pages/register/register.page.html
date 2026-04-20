@@ -1,0 +1,97 @@
+﻿<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro - Konoha</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="register-content">
+  <div class="register-wrapper">
+    <div class="register-form-container">
+      <h1>Crear Cuenta</h1>
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <!-- Usuario -->
+        <ion-item>
+          <ion-label position="stacked">Usuario</ion-label>
+          <ion-input formControlName="username" placeholder="Elige tu usuario"></ion-input>
+        </ion-item>
+        <div class="requirement" [class.met]="registerForm.get('username')?.valid && registerForm.get('username')?.touched">
+          <ion-icon [name]="registerForm.get('username')?.valid && registerForm.get('username')?.touched ? 'checkmark-circle' : 'close-circle'"></ion-icon>
+          <span>Usuario requerido</span>
+        </div>
+
+        <!-- Rango -->
+        <ion-item>
+          <ion-label>Rango Inicial</ion-label>
+          <ion-select formControlName="rank">
+            <ion-select-option value="genin">Genin (Aprendiz)</ion-select-option>
+            <ion-select-option value="chunin">Chunin (Medio)</ion-select-option>
+            <ion-select-option value="jonin">Jonin (Experto)</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- Contraseña -->
+        <ion-item>
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input formControlName="password" type="password" placeholder="Mínimo 6 caracteres"></ion-input>
+        </ion-item>
+
+        <div class="requirements-list">
+          <p class="requirements-title">Requisitos de contraseña:</p>
+          
+          <div class="requirement" [class.met]="registerForm.get('password')?.value?.length >= 6">
+            <ion-icon [name]="registerForm.get('password')?.value?.length >= 6 ? 'checkmark-circle' : 'close-circle'"></ion-icon>
+            <span>Mínimo 6 caracteres (actual: {{ registerForm.get('password')?.value?.length || 0 }})</span>
+          </div>
+          
+          <div class="requirement" [class.met]="hasUpperCase()">
+            <ion-icon [name]="hasUpperCase() ? 'checkmark-circle' : 'close-circle'"></ion-icon>
+            <span>Contiene mayúscula (A-Z)</span>
+          </div>
+          
+          <div class="requirement" [class.met]="hasNumber()">
+            <ion-icon [name]="hasNumber() ? 'checkmark-circle' : 'close-circle'"></ion-icon>
+            <span>Contiene número (0-9)</span>
+          </div>
+
+          <div class="requirement" [class.met]="hasSpecialChar()">
+            <ion-icon [name]="hasSpecialChar() ? 'checkmark-circle' : 'close-circle'"></ion-icon>
+            <span>Contiene carácter especial (!@#$%)</span>
+          </div>
+        </div>
+
+        <!-- Confirmar Contraseña -->
+        <ion-item>
+          <ion-label position="stacked">Confirmar Contraseña</ion-label>
+          <ion-input formControlName="confirmPassword" type="password" placeholder="Confirma tu contraseña"></ion-input>
+        </ion-item>
+
+        <div class="requirement" [class.met]="passwordsMatch() && registerForm.get('confirmPassword')?.touched">
+          <ion-icon [name]="passwordsMatch() && registerForm.get('confirmPassword')?.touched ? 'checkmark-circle' : 'close-circle'"></ion-icon>
+          <span>Las contraseñas coinciden</span>
+        </div>
+
+        <!-- Error Message -->
+        <div *ngIf="error" class="error-message">
+          <ion-icon name="alert-circle"></ion-icon>
+          {{ error }}
+        </div>
+
+        <!-- Botón Registrar -->
+        <ion-button expand="block" type="submit" [disabled]="loading || registerForm.invalid || !passwordsMatch()" class="btn-register" color="primary">
+          <ion-icon name="person-add" slot="start"></ion-icon>
+          {{ loading ? 'Registrando...' : 'Registrarse' }}
+        </ion-button>
+      </form>
+
+      <div class="login-link">
+        <p>¿Ya tienes cuenta? <a (click)="goToLogin()">Inicia sesión</a></p>
+      </div>
+
+      <!-- Info Box -->
+      <div class="info-box">
+        <ion-icon name="information-circle"></ion-icon>
+        <p>Crea una contraseña fuerte para proteger tu cuenta</p>
+      </div>
+    </div>
+  </div>
+</ion-content>

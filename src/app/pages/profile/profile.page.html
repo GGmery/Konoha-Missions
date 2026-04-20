@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil del Shinobi</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()" color="danger">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="profile-content">
+  <div class="ninja-card" *ngIf="currentNinja">
+    <div class="avatar">
+      <img [src]="getAvatarUrl()" alt="Avatar">
+    </div>
+
+    <h1>{{ currentNinja.username }}</h1>
+    <p class="rank" [class]="'rank-' + currentNinja.rank">{{ currentNinja.rank | uppercase }}</p>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Estadísticas</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="stat-row">
+          <span class="stat-label">Nivel:</span>
+          <span class="stat-value">{{ currentNinja.level }}</span>
+        </div>
+
+        <div class="stat-row">
+          <span class="stat-label">XP Total:</span>
+          <span class="stat-value">{{ currentNinja.xp }}</span>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="(currentNinja.xp % 100)"></div>
+        </div>
+
+        <div class="stat-row">
+          <span class="stat-label">Misiones Aceptadas:</span>
+          <span class="stat-value">{{ (currentNinja.acceptedMissions?.length || 0) }}</span>
+        </div>
+
+        <div class="stat-row">
+          <span class="stat-label">Misiones Completadas:</span>
+          <span class="stat-value">{{ (currentNinja.completedMissions?.length || 0) }}</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="action-buttons">
+    <ion-button expand="block" (click)="goToMissions()">
+      <ion-icon name="list" slot="start"></ion-icon>
+      Volver al Tablón
+    </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,270 @@
+.missions-content {
+  --ion-background-color: linear-gradient(135deg, #1a0f2e 0%, #2d1b4e 100%);
+}
+
+/* TABS/PESTAÑAS */
+.tabs-container {
+  display: flex;
+  gap: 0;
+  padding: 0 15px;
+  margin: 15px 0;
+  background: rgba(58, 35, 100, 0.3);
+  border-radius: 12px;
+  padding: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.tab-button {
+  flex: 1;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #b0a4d4;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tab-button:hover {
+  background: rgba(147, 112, 219, 0.2);
+  color: #c4b5fd;
+}
+
+.tab-button.active {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+  color: #e0d9ff;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.tab-label {
+  font-size: 12px;
+  display: block;
+}
+
+.tab-count {
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 700;
+  min-width: 24px;
+  text-align: center;
+}
+
+.tab-button.active .tab-count {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.filters {
+  padding: 20px;
+  background: rgba(58, 35, 100, 0.4);
+  margin-bottom: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(147, 112, 219, 0.3);
+  margin: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.filters ion-item {
+  margin-bottom: 15px;
+  --border-color: rgba(147, 112, 219, 0.3);
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+.filters ion-item ion-input,
+.filters ion-item ion-label,
+.filters ion-item ion-select {
+  --color: #e0d9ff;
+}
+
+.filters ion-label {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #b0a4d4 !important;
+}
+
+/* SECCIONES */
+.missions-section {
+  margin: 20px 15px;
+  margin-bottom: 30px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 20px;
+  background: rgba(58, 35, 100, 0.6);
+  border-left: 4px solid #8b5cf6;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 0;
+}
+
+.section-header.pending {
+  border-left-color: #ff9800;
+  background: rgba(255, 152, 0, 0.08);
+}
+
+.section-header.completed {
+  border-left-color: #4caf50;
+  background: rgba(76, 175, 80, 0.08);
+}
+
+.section-title {
+  color: #e0d9ff;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  flex: 1;
+}
+
+.section-header.pending .section-title {
+  color: #ffb74d;
+}
+
+.section-header.completed .section-title {
+  color: #81c784;
+}
+
+.mission-count {
+  background: rgba(147, 112, 219, 0.3);
+  color: #c4b5fd;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.section-header.pending .mission-count {
+  background: rgba(255, 152, 0, 0.2);
+  color: #ffb74d;
+}
+
+.section-header.completed .mission-count {
+  background: rgba(76, 175, 80, 0.2);
+  color: #81c784;
+}
+
+/* SUBSECCIONES */
+.subsection {
+  margin-bottom: 20px;
+}
+
+.subsection-title {
+  color: #b0a4d4;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px 20px 5px 20px;
+  margin: 0;
+}
+
+/* LISTA DE MISIONES */
+ion-list {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.missions-list {
+  background: transparent;
+  padding: 0;
+}
+
+.mission-item {
+  margin-bottom: 10px;
+  border-radius: 0 0 8px 8px;
+  background: rgba(58, 35, 100, 0.4);
+  border: 1px solid rgba(147, 112, 219, 0.3);
+  border-top: none;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  transition: all 0.3s ease;
+}
+
+.mission-item:hover {
+  background: rgba(58, 35, 100, 0.6);
+  border-color: rgba(147, 112, 219, 0.5);
+}
+
+.mission-item.in-progress {
+  border-left: 4px solid #ff9800;
+}
+
+.mission-item.completed {
+  opacity: 0.7;
+  border-left: 4px solid #4caf50;
+}
+
+.mission-item h2 {
+  font-weight: 600;
+  color: #e0d9ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.mission-item.completed h2,
+.completed-text {
+  text-decoration: line-through;
+  color: #8b7ca4;
+}
+
+.mission-item p {
+  color: #b0a4d4;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+ion-badge {
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-weight: 600;
+  font-size: 11px;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+ion-badge.disponible {
+  background: rgba(76, 175, 80, 0.2);
+  color: #81c784;
+  border: 1px solid rgba(76, 175, 80, 0.5);
+}
+
+ion-badge.aceptada {
+  background: rgba(255, 152, 0, 0.2);
+  color: #ffb74d;
+  border: 1px solid rgba(255, 152, 0, 0.5);
+}
+
+ion-badge.completada {
+  background: rgba(33, 150, 243, 0.2);
+  color: #64b5f6;
+  border: 1px solid rgba(33, 150, 243, 0.5);
+}
+
+/* ESTADO VACÍO */
+.empty-state {
+  text-align: center;
+  padding: 30px 20px;
+  color: #8b7ca4;
+  font-style: italic;
+  background: rgba(58, 35, 100, 0.2);
+  border: 1px dashed rgba(147, 112, 219, 0.3);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}

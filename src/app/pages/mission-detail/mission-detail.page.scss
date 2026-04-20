@@ -1,0 +1,203 @@
+.mission-detail-content {
+  --ion-background-color: linear-gradient(135deg, #1a0f2e 0%, #2d1b4e 100%);
+  padding: 15px;
+}
+
+ion-card {
+  background: rgba(58, 35, 100, 0.4);
+  border: 1px solid rgba(147, 112, 219, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+ion-card-header {
+  padding: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(147, 112, 219, 0.3);
+}
+
+ion-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #e0d9ff;
+}
+
+ion-card-subtitle {
+  color: #b0a4d4;
+}
+
+ion-card-content {
+  padding: 20px;
+  color: #e0d9ff;
+}
+
+ion-card-content p {
+  color: #b0a4d4;
+  margin-bottom: 15px;
+}
+
+ion-badge {
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+ion-badge.active {
+  background: #4caf50;
+  color: white;
+}
+
+ion-badge.pending {
+  background: #ff9800;
+  color: white;
+}
+
+ion-badge.completed {
+  background: #2196f3;
+  color: white;
+}
+
+ion-badge.failed {
+  background: #f44336;
+  color: white;
+}
+
+.action-buttons {
+  margin-top: 20px;
+  padding: 0 15px;
+}
+
+.action-buttons ion-button {
+  margin-bottom: 10px;
+  --background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+  --border-radius: 8px;
+  --color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5);
+}
+
+.action-buttons ion-button:active,
+.action-buttons ion-button:focus {
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.7);
+  --transform: translateY(-2px);
+}
+
+.report-form {
+  margin: 20px 15px;
+  padding: 20px;
+  background: rgba(58, 35, 100, 0.4);
+  border: 1px solid rgba(147, 112, 219, 0.3);
+  border-radius: 12px;
+}
+
+.report-form ion-item {
+  margin-bottom: 15px;
+  --border-color: rgba(147, 112, 219, 0.3);
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+.report-form ion-item ion-input,
+.report-form ion-item ion-label,
+.report-form ion-item ion-textarea {
+  --color: #e0d9ff;
+}
+
+.report-form ion-label {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #b0a4d4 !important;
+}
+
+.completed-info {
+  text-align: center;
+  padding: 20px;
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 12px;
+  margin: 20px 15px;
+}
+
+.completed-info ion-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: #6ee7b7;
+}
+
+.completed-info p {
+  margin: 0;
+  color: #6ee7b7;
+  font-weight: 600;
+}
+
+ion-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  --color: #8b5cf6;
+}
+
+.loading-spinner {
+  margin-top: 50px;
+}
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+  padding: 20px;
+}
+
+.error-card {
+  background: rgba(58, 35, 100, 0.4);
+  border: 1px solid rgba(147, 112, 219, 0.3);
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 400px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.error-icon {
+  font-size: 64px;
+  color: #ff9800;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.error-card h2 {
+  color: #e0d9ff;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.error-card p {
+  color: #b0a4d4;
+  font-size: 14px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.error-message {
+  color: #c4b5fd !important;
+  font-style: italic;
+  background: rgba(139, 92, 246, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #8b5cf6;
+  margin-bottom: 25px !important;
+}
+
+.back-btn {
+  --color: #8b5cf6;
+  font-weight: 600;
+  margin-top: 10px;
+}

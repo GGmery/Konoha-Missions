@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/missions"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalles de Misión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="mission-detail-content">
+  <ion-card *ngIf="mission">
+    <ion-card-header>
+      <ion-card-title>{{ mission.title }}</ion-card-title>
+      <ion-card-subtitle>Rango: {{ mission.rank }} | Recompensa: {{ mission.reward }} XP</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>{{ mission.description }}</p>
+
+      <ion-badge [color]="getStatusColor(mission.status)">{{ mission.status }}</ion-badge>
+
+      <div class="action-buttons" *ngIf="mission.status === 'DISPONIBLE' && canAccept()">
+        <ion-button expand="block" color="primary" (click)="acceptMission()">
+          Aceptar Misión
+        </ion-button>
+      </div>
+
+      <div class="action-buttons" *ngIf="mission.status === 'ACEPTADA'">
+        <p style="font-size: 12px; color: #666;">Misión Aceptada - Completa y envía tu reporte</p>
+        <ion-button expand="block" color="success" (click)="showReportForm()">
+          Enviar Reporte
+        </ion-button>
+      </div>
+
+      <div class="report-form" *ngIf="showingReportForm">
+        <ion-item>
+          <ion-label position="stacked">Reporte de Misión</ion-label>
+          <ion-textarea [(ngModel)]="reportText" placeholder="Describe cómo completaste la misión"></ion-textarea>
+        </ion-item>
+
+        <ion-button expand="block" color="success" (click)="submitReport()" [disabled]="!reportText">
+          Confirmar Reporte
+        </ion-button>
+        <ion-button expand="block" color="medium" (click)="cancelReport()">
+          Cancelar
+        </ion-button>
+      </div>
+
+      <div class="completed-info" *ngIf="mission.status === 'COMPLETADA'">
+        <ion-icon name="checkmark-circle" color="success"></ion-icon>
+        <p>¡Misión completada! Ganaste {{ mission.reward }} XP</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="error-container" *ngIf="loadingError">
+    <div class="error-card">
+      <ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
+      <h2>Información Incompleta</h2>
+      <p>Los detalles de esta misión no están disponibles en el momento.</p>
+      <p class="error-message">Tendras que investigar en el terreno para descubrir mas sobre esta mision.</p>
+      <ion-button expand="block" fill="clear" routerLink="/missions" class="back-btn">
+        ← Volver a Misiones
+      </ion-button>
+    </div>
+  </div>
+
+  <ion-spinner *ngIf="isLoading" class="loading-spinner"></ion-spinner>
+</ion-content>

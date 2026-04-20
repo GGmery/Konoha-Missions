@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tablón de Misiones</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToProfile()">
+        <ion-icon name="person"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="missions-content">
+  <!-- TABS/PESTAÑAS -->
+  <div class="tabs-container">
+    <button class="tab-button" [class.active]="activeTab === 'todas'" (click)="activeTab = 'todas'">
+      <span class="tab-label">Todas</span>
+      <span class="tab-count">{{ missions.length }}</span>
+    </button>
+    <button class="tab-button" [class.active]="activeTab === 'pendientes'" (click)="activeTab = 'pendientes'">
+      <span class="tab-label">Por Completar</span>
+      <span class="tab-count">{{ availableMissions.length + acceptedMissions.length }}</span>
+    </button>
+    <button class="tab-button" [class.active]="activeTab === 'completadas'" (click)="activeTab = 'completadas'">
+      <span class="tab-label">Completadas</span>
+      <span class="tab-count">{{ completedMissions.length }}</span>
+    </button>
+  </div>
+
+  <div class="filters">
+    <ion-item>
+      <ion-label>Rango:</ion-label>
+      <ion-select [(ngModel)]="selectedRank" (ionChange)="onFilterChange()">
+        <ion-select-option value="">Todos</ion-select-option>
+        <ion-select-option value="D">D</ion-select-option>
+        <ion-select-option value="C">C</ion-select-option>
+        <ion-select-option value="B">B</ion-select-option>
+        <ion-select-option value="A">A</ion-select-option>
+        <ion-select-option value="S">S</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
+  <!-- TODAS LAS MISIONES -->
+  <div class="missions-section" *ngIf="activeTab === 'todas'">
+    <ion-list class="missions-list">
+      <ion-item *ngFor="let mission of missions" (click)="goToMissionDetail(mission.id)" button class="mission-item" [class.completed]="mission.status === 'COMPLETADA'">
+        <ion-label>
+          <h2 [class.completed-text]="mission.status === 'COMPLETADA'">{{ mission.title }}</h2>
+          <p>Rango: {{ mission.rank }} | Recompensa: {{ mission.reward }} XP</p>
+          <ion-badge [class]="mission.status.toLowerCase()">{{ mission.status }}</ion-badge>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <div *ngIf="missions.length === 0" class="empty-state">
+      <p>No hay misiones disponibles 📭</p>
+    </div>
+  </div>
+
+  <!-- MISIONES POR COMPLETAR (Disponibles + Aceptadas) -->
+  <div class="missions-section" *ngIf="activeTab === 'pendientes'">
+    <!-- Disponibles -->
+    <div *ngIf="availableMissions.length > 0" class="subsection">
+      <h3 class="subsection-title">Disponibles</h3>
+      <ion-list class="missions-list">
+        <ion-item *ngFor="let mission of availableMissions" (click)="goToMissionDetail(mission.id)" button class="mission-item">
+          <ion-label>
+            <h2>{{ mission.title }}</h2>
+            <p>Rango: {{ mission.rank }} | Recompensa: {{ mission.reward }} XP</p>
+            <ion-badge class="disponible">DISPONIBLE</ion-badge>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <!-- Aceptadas -->
+    <div *ngIf="acceptedMissions.length > 0" class="subsection">
+      <h3 class="subsection-title">Aceptadas</h3>
+      <ion-list class="missions-list">
+        <ion-item *ngFor="let mission of acceptedMissions" (click)="goToMissionDetail(mission.id)" button class="mission-item in-progress">
+          <ion-label>
+            <h2>{{ mission.title }}</h2>
+            <p>Rango: {{ mission.rank }} | Recompensa: {{ mission.reward }} XP</p>
+            <ion-badge class="aceptada">ACEPTADA</ion-badge>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div *ngIf="availableMissions.length === 0 && acceptedMissions.length === 0" class="empty-state">
+      <p>No hay misiones por completar</p>
+    </div>
+  </div>
+
+  <!-- MISIONES COMPLETADAS -->
+  <div class="missions-section" *ngIf="activeTab === 'completadas'">
+    <ion-list class="missions-list" *ngIf="completedMissions.length > 0">
+      <ion-item *ngFor="let mission of completedMissions" (click)="goToMissionDetail(mission.id)" button class="mission-item completed">
+        <ion-label>
+          <h2 class="completed-text">{{ mission.title }}</h2>
+          <p>Rango: {{ mission.rank }} | Recompensa: {{ mission.reward }} XP</p>
+          <ion-badge class="completada">COMPLETADA</ion-badge>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <div *ngIf="completedMissions.length === 0" class="empty-state">
+      <p>Aun no has completado misiones</p>
+    </div>
+  </div>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+</ion-content>

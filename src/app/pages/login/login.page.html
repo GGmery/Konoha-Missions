@@ -1,0 +1,33 @@
+﻿<ion-header>
+  <ion-toolbar>
+    <ion-title>Login - Konoha</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login-content">
+  <div class="login-wrapper">
+    <div class="login-form-container">
+      <h1>Bienvenido</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <ion-item>
+          <ion-label>Usuario</ion-label>
+          <ion-input formControlName="username" placeholder="Ingresa tu usuario"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Contraseña</ion-label>
+          <ion-input formControlName="password" type="password" placeholder="Ingresa tu contraseña"></ion-input>
+        </ion-item>
+
+        <div *ngIf="error" class="error-message">{{ error }}</div>
+
+        <ion-button expand="block" type="submit" [disabled]="loading" class="btn-login">
+          {{ loading ? 'Conectando...' : 'Login' }}
+        </ion-button>
+      </form>
+
+      <div class="register-link">
+        <p>¿No tienes cuenta? <a (click)="goToRegister()">Regístrate aquí</a></p>
+      </div>
+    </div>
+  </div>
+</ion-content>
